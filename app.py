@@ -11,6 +11,10 @@ api = Api(app)
 # loading model
 model = joblib.load('model.pkl')
 
+@app.route('/'):
+    def home():
+        return 'Olá mundo!'
+
 # argument parsing
 parser = reqparse.RequestParser()
 parser.add_argument('idade', type=float)
