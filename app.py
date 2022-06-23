@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import reqparse, abort, Api, Resource
 import joblib
 import numpy as np
@@ -13,7 +13,7 @@ model = joblib.load('model.pkl')
 
 @app.route('/')
 def home():
-    return 'Olá mundo!'
+    return render_template('index.html')
 
 # argument parsing
 parser = reqparse.RequestParser()
@@ -72,9 +72,10 @@ class PredictProbability(Resource):
 # Route the URL to the resource
 
 # api.add_resource(PredictProbability, '/')
-@app.route('/predict', methods=['GET'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    return api.add_resource(PredictProbability, '/predict')
+    #return api.add_resource(PredictProbability, '/predict')
+     return render_template('index.html', prediction_text='Chance de IC {}'.format(api.add_resource(PredictProbability, '/predict')))
 
 
 if __name__ == '__main__':
