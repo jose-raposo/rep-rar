@@ -70,7 +70,11 @@ class PredictProbability(Resource):
 
 # Setup the Api resource routing here
 # Route the URL to the resource
-api.add_resource(PredictProbability, '/')
+
+# api.add_resource(PredictProbability, '/')
+@app.route('/predict', methods=['GET']):
+    def predict():
+        return api.add_resource(PredictProbability, '/predict')
 
 
 if __name__ == '__main__':
