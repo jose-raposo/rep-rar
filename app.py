@@ -11,21 +11,21 @@ api = Api(app)
 # loading model
 model = joblib.load('model.pkl')
 
-# argument parsing
-parser = reqparse.RequestParser()
-parser.add_argument('idade', type=float)
-parser.add_argument('esv', type = float, action='append', location='args')
-parser.add_argument('essv', type = float, action='append', location='args')
-parser.add_argument('imve', type = float, action='append', location='args')
-parser.add_argument('vae', type = float, action='append', location='args')
-parser.add_argument('u', type = float, action='append', location='args')
-parser.add_argument('creat', type = float, action='append', location='args')
-parser.add_argument('k', type = float, action='append', location='args')
-parser.add_argument('ct', type = float, action='append', location='args')
-
 
 class PredictProbability(Resource):
     def get(self):
+        
+        # argument parsing
+        parser = reqparse.RequestParser()
+        parser.add_argument('idade', type=float)
+        parser.add_argument('esv', type = float, action='append')
+        parser.add_argument('essv', type = float, action='append')
+        parser.add_argument('imve', type = float, action='append')
+        parser.add_argument('vae', type = float, action='append')
+        parser.add_argument('u', type = float, action='append')
+        parser.add_argument('creat', type = float, action='append')
+        parser.add_argument('k', type = float, action='append')
+        parser.add_argument('ct', type = float, action='append')
 
         # use parser and find the user's query
         args = parser.parse_args()
