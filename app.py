@@ -11,9 +11,9 @@ api = Api(app)
 # loading model
 model = joblib.load('model.pkl')
 
-@app.route('/'):
-    def home():
-        return 'Olá mundo!'
+@app.route('/')
+def home():
+    return 'Olá mundo!'
 
 # argument parsing
 parser = reqparse.RequestParser()
@@ -72,9 +72,9 @@ class PredictProbability(Resource):
 # Route the URL to the resource
 
 # api.add_resource(PredictProbability, '/')
-@app.route('/predict', methods=['GET']):
-    def predict():
-        return api.add_resource(PredictProbability, '/predict')
+@app.route('/predict', methods=['GET'])
+def predict():
+    return api.add_resource(PredictProbability, '/predict')
 
 
 if __name__ == '__main__':
