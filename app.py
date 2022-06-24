@@ -78,6 +78,7 @@ class PredictProbability(Resource):
             var = int(pred_proba*100)
 
             # create JSON object
+            print(var)
             output = {'prediction': str(var)+'%'}
             
             return output
